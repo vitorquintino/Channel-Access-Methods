@@ -6,7 +6,11 @@ public class Package {
 
     private int size;
 
-    public Package() { }
+    Package() { }
+
+    public Package(int size){
+        this.setSize(size);
+    }
 
     public int getSize() {
         return size;
@@ -16,8 +20,8 @@ public class Package {
         this.size = size;
     }
 
-    public void generateRandomSize(Random rn){
-        int packageSize = rn.nextInt(30000000) + 10000000;
+    void generateRandomSize(Random rn){
+        int packageSize = rn.nextInt(50000000) + 10000000;
 
         this.setSize(packageSize);
     }

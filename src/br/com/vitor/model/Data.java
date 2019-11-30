@@ -1,5 +1,7 @@
 package br.com.vitor.model;
 
+import com.sun.xml.internal.bind.v2.runtime.reflect.Lister;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -8,7 +10,17 @@ public class Data {
 
     private List<Package> packages;
 
-    Random rn;
+    private Random rn;
+
+    public Data(Data data){
+        packages = new ArrayList<>();
+
+        for(Package p: data.getPackages()){
+            Package newPackage = new Package(p.getSize());
+
+            this.packages.add(newPackage);
+        }
+    }
 
     public Data() {
         packages = new ArrayList<>();
@@ -21,7 +33,7 @@ public class Data {
     }
 
     public void generateRandomData(){
-        int numberOfPackages = rn.nextInt(90) + 10;
+        int numberOfPackages = rn.nextInt(100);
 
         for (int i = 0; i < numberOfPackages; i++){
             Package pkg = new Package();
