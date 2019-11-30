@@ -33,7 +33,7 @@ public class Data {
     }
 
     public void generateRandomData(){
-        int numberOfPackages = rn.nextInt(100);
+        int numberOfPackages = rn.nextInt(99) + 1;
 
         for (int i = 0; i < numberOfPackages; i++){
             Package pkg = new Package();

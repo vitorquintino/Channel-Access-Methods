@@ -21,6 +21,18 @@ public class GlobalSimulator {
             float pollingTime = PollingSimulator.simulate(bandwidth, pollingData);
             System.out.println(pollingTime);
             Results.addPollingTime(pollingTime);
+
+            Data alohaData = new Data(data);
+            float alohaTime = ALOHASimulator.simulate(bandwidth, alohaData);
+            System.out.println(alohaTime);
+            Results.addAlohaTime(alohaTime);
+
+            Data idealData = new Data(data);
+            float idealTime = IdealSimulator.simulate(bandwidth, idealData);
+            System.out.println(idealTime);
+            Results.addIdealTime(idealTime);
+
+            TDMASimulator.simulate(bandwidth, data);
         }
     }
 }
