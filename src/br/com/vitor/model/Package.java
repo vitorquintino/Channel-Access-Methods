@@ -1,5 +1,7 @@
 package br.com.vitor.model;
 
+import br.com.vitor.statistics.Results;
+
 import java.util.Random;
 
 public class Package {
@@ -21,8 +23,10 @@ public class Package {
     }
 
     void generateRandomSize(Random rn){
-        int packageSize = rn.nextInt(50000000) + 10000000;
+        int packageSize = rn.nextInt(90000000) + 10000000;
 
         this.setSize(packageSize);
+
+        Results.addPackageSize(packageSize);
     }
 }

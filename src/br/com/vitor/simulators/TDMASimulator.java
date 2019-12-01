@@ -11,13 +11,16 @@ public class TDMASimulator {
 
         int size = findBiggerPackage(data);
         int auxTime = (int) Math.floor(((double) size)/bandwidth);
-        int remainingSize = size - (bandwidth * auxTime);
 
-        int biggerIndex = findBiggerIndex(size, data);
         int check = findLastPackageWithBytesToSend(data, bandwidth * auxTime);
 
+        int remainingSize = data.getPackages().get(check).getSize() - (bandwidth * auxTime);
+
+        time += check;
         time += ((float)remainingSize)/bandwidth;
         time += (float) auxTime * data.getPackages().size();
+
+        //TODO: terminar esse algoritmo, calcular as medias do results, calcular a media do tamanho dos pacotes, calcular a media da quantidade de pacotes, relatorio
 
         return time;
     }

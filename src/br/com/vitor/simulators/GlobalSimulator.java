@@ -6,11 +6,13 @@ import br.com.vitor.statistics.Results;
 public class GlobalSimulator {
     //Chama cada simulação aqui nesse método
     public static void beginSimulation(int numberOfSimulations){
-        int bandwidth = 10000000;
+        int bandwidth = 30000000;
 
         for (int i = 1; i <= numberOfSimulations; i++) {
             Data data = new Data();
             data.generateRandomData();
+
+            Results.addPackageQuantity(data.getPackages().size());
 
             Data fdmaData = new Data(data);
             float fdmaTime = FDMASimulator.simulate(bandwidth, fdmaData);
@@ -32,7 +34,10 @@ public class GlobalSimulator {
             System.out.println(idealTime);
             Results.addIdealTime(idealTime);
 
-            TDMASimulator.simulate(bandwidth, data);
+            Data tdmaData = new Data(data);
+            float tdmaTime = TDMASimulator.simulate(bandwidth, tdmaData);
+            System.out.println(tdmaTime);
+            Results.addTdmaTime(tdmaTime);
         }
     }
 }
